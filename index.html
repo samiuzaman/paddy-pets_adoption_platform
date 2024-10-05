@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,6 +18,13 @@
       href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
       rel="stylesheet"
     />
+
+    <!-- FontAwesome CDN Link -->
+    <script
+      src="https://kit.fontawesome.com/27daea0603.js"
+      crossorigin="anonymous"
+    ></script>
+
     <!-- DaisyUI CDN Link -->
     <link
       href="https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css"
@@ -32,7 +39,7 @@
           extend: {
             colors: {
               darkCyan: "#0E7A81",
-              chineseBlack: "#131313",
+              chineseBlack: "#5A5A5A",
               darkGray: "rgba(19, 19, 19, 0.7)",
               lightGray: "rgba(255, 255, 255, 0.6)",
             },
@@ -42,11 +49,73 @@
     </script>
   </head>
   <body class="font-[Lato]">
-    <h2
-      class="text-3xl text-red-700 bg-yellow-400 py-5 font-extrabold text-center"
-    >
-      Pet Adoption Platform
-    </h2>
+    <header class="w-11/12 mx-auto mt-3">
+      <!-- Nav Section Code Start Here -->
+      <nav>
+        <div class="navbar bg-base-100">
+          <div class="navbar-start gap-6">
+            <div class="dropdown">
+              <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 6h16M4 12h8m-8 6h16"
+                  />
+                </svg>
+              </div>
+              <ul
+                tabindex="0"
+                class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              >
+                <li>
+                  <a class="text-base text-chineseBlack font-normal">Home</a>
+                </li>
+                <li>
+                  <a class="text-base text-chineseBlack font-normal">Shop</a>
+                </li>
+                <li>
+                  <a class="text-base text-chineseBlack font-normal">Contact</a>
+                </li>
+              </ul>
+            </div>
+            <div class="flex justify-center items-center gap-2">
+              <img src="images/logo.webp" alt="Logo" />
+              <h3 class="text-3xl font-black">Paddy</h3>
+            </div>
+          </div>
+          <div class="navbar-center hidden lg:flex">
+            <ul class="menu menu-horizontal px-1">
+              <li>
+                <a class="text-base text-chineseBlack font-normal">Home</a>
+              </li>
+              <li>
+                <a class="text-base text-chineseBlack font-normal">Shop</a>
+              </li>
+              <li>
+                <a class="text-base text-chineseBlack font-normal">Contact</a>
+              </li>
+            </ul>
+          </div>
+          <div class="navbar-end">
+            <i
+              class="p-3 rounded-full shadow-md border border-rgba(14, 122, 129, 0.2) cursor-pointer far fa-user"
+            ></i>
+          </div>
+        </div>
+      </nav>
+      <!-- Nav Section Code End Here -->
+      <!-- Banner Section Code Start Here -->
+      
+      <!-- Banner Section Code End Here -->
+    </header>
     <!-- JavaScript File -->
     <script src="script.js"></script>
   </body>
