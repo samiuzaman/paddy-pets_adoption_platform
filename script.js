@@ -90,7 +90,18 @@ const displayAllCards = (petsCard) => {
 };
 // Dynamic Cards Section Code End Here
 
-
+// Likes Post List Section Code Start Here
+const likesPost = (image) => {
+  const likesImagesContainer = document.getElementById(
+    "likes-images-container"
+  );
+  const div = document.createElement("div");
+  div.innerHTML = `
+  <img class="rounded-lg mb-4 h-28" src=${image}>
+  `;
+  likesImagesContainer.appendChild(div);
+};
+// Likes Post List Section Code End Here
 
 // Dynamic Modal Section Code Start Here
 const loadModals = async (petId) => {
