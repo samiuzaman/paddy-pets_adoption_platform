@@ -40,8 +40,8 @@
             colors: {
               darkCyan: "#0E7A81",
               chineseBlack: "#5A5A5A",
-              darkGray: "rgba(19, 19, 19, 0.7)",
-              lightGray: "rgba(255, 255, 255, 0.6)",
+              darkGray: "#131313B3",
+              lightGray: "#FFFFFF99",
             },
           },
         },
@@ -130,7 +130,7 @@
           <button
             class="btn text-white bg-darkCyan hover:btn-success text-lg font-semibold"
           >
-            View More
+            <a href="#main-section">View More</a>
           </button>
         </div>
         <div class="flex justify-center mt-12">
@@ -139,6 +139,79 @@
       </section>
       <!-- Banner Section Code End Here -->
     </header>
+
+    <main id="main-section" class="w-11/12 mx-auto my-14">
+      <!-- Title Code -->
+      <div class="w-6/12 mx-auto text-center mb-12">
+        <h2 class="text-4xl font-black text-black mb-6">
+          Adopt Your Best Friend
+        </h2>
+        <p class="text-darkGray">
+          Dogs and cats have so much love to give. Letting them into your home
+          and your life will bring years of unconditional love. Helping an
+          animal in need gives them a second chance to become the loving, loyal
+          family member they may have not received before.
+        </p>
+      </div>
+      <!-- Dynamic Category Button Start Here -->
+      <div id="category-btn-container" class="flex justify-center gap-7">
+        
+      </div>
+      <!-- Dynamic Category Button End Here -->
+      <!-- Dynamic Card Head Section -->
+      <section>
+        <div class="flex justify-between items-center my-8">
+          <h3 class="text-2xl font-bold text-black">Best Deal For you</h3>
+          <button
+            class="btn btn-success bg-darkCyan text-white text-xl font-bold"
+          >
+            Sort by Price
+          </button>
+        </div>
+
+        <!-- Dynamic Section Parent Div -->
+
+        <div class="flex justify-between items-start gap-5">
+          <!-- Dynamic Card Section Code Start Here -->
+          <div
+            id="cards-container"
+            class="w-9/12 grid grid-cols-3 justify-between items-center gap-5"
+          >
+          </div>
+          <!-- Dynamic Card Section Code End Here -->
+
+          <!-- No Information Available Image Section -->
+          <div class="hidden w-4/6 h-96 bg-[#13131308] flex flex-col justify-center items-center text-center rounded-xl mb-8">
+            <img src="images/error.webp" alt="Error Image" />
+            <h3>No Information Available</h3>
+            <p>
+              This item is currently not available. Try to Another Category
+              Items.
+            </p>
+          </div>
+
+          <!-- Dynamic Likes Images List Section Code Start Here -->
+          <div
+            id="likes-images-container"
+            class="w-4/12 min-h-screen grid grid-cols-2 gap-5 border-2 p-4 rounded-2xl"
+          >
+            
+            
+            </div>
+          </div>
+          <!-- Dynamic Likes Images List Section Code End Here -->
+        </div>
+      </section>
+      <!-- Modal Section Code Start Here -->
+      <!-- You can open the modal using ID.showModal() method -->
+      <button class="btn" onclick="customModal.showModal()">open modal</button>
+      <div id="modal-container">
+
+      </div>
+      <!-- Modal Section Code End Here -->
+    </main>
+
+    <!-- Footer Section Code Start Here -->
     <footer
       class="footer bg-base-200 flex justify-between items-start bg-[#131313] p-14 px-24"
     >
@@ -152,10 +225,14 @@
         <a class="link link-hover">Email: petsshop@yehoo.com</a>
         <a class="link link-hover">Openings hours: 9.00 AM - 5.00 PM</a>
         <div class="flex justify-start items-center">
-          <img class="w-10 h-10 mr-2" src="images/facebook.png" alt=" Logo">
-          <img class="w-8 h-8" src="images/x-logo.png" alt="X Logo">
-          <img class="w-16 h-16" src="images/youtube.png" alt="YouTube Logo">
-          <img class="w-10 h-10" src="images/instgram.png" alt="instgram Logo">
+          <img class="w-10 h-10 mr-2" src="images/facebook.png" alt=" Logo" />
+          <img class="w-8 h-8" src="images/x-logo.png" alt="X Logo" />
+          <img class="w-16 h-16" src="images/youtube.png" alt="YouTube Logo" />
+          <img
+            class="w-10 h-10"
+            src="images/instgram.png"
+            alt="instgram Logo"
+          />
         </div>
       </nav>
 
@@ -175,7 +252,11 @@
           placeholder="Enter your email"
           class="input input-bordered w-full max-w-xs bg-[#FFFFFF0D]"
         />
-        <button class="btn bg-darkCyan text-white hover:text-black border-none btn-wide py-2 cursor-pointer rounded-lg text-lg font-semibold mt-2">Subscribe</button>
+        <button
+          class="btn bg-darkCyan text-white hover:text-black border-none btn-wide py-2 cursor-pointer rounded-lg text-lg font-semibold mt-2"
+        >
+          Subscribe
+        </button>
       </nav>
     </footer>
     <!-- JavaScript File -->
