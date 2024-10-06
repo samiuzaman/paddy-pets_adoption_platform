@@ -130,7 +130,7 @@
           <button
             class="btn text-white bg-darkCyan hover:btn-success text-lg font-semibold"
           >
-            <a href="#main-section">View More</a>
+            <a href="#btn-to-main">View More</a>
           </button>
         </div>
         <div class="flex justify-center mt-12">
@@ -154,12 +154,10 @@
         </p>
       </div>
       <!-- Dynamic Category Button Start Here -->
-      <div id="category-btn-container" class="flex justify-center gap-7">
-        
-      </div>
+      <div id="category-btn-container" class="flex justify-center gap-7"></div>
       <!-- Dynamic Category Button End Here -->
       <!-- Dynamic Card Head Section -->
-      <section>
+      <section id="btn-to-main">
         <div class="flex justify-between items-center my-8">
           <h3 class="text-2xl font-bold text-black">Best Deal For you</h3>
           <button
@@ -171,17 +169,18 @@
 
         <!-- Dynamic Section Parent Div -->
 
-        <div class="flex justify-between items-start gap-5">
+        <div class="flex justify-between items-start gap-6">
           <!-- Dynamic Card Section Code Start Here -->
           <div
             id="cards-container"
-            class="w-9/12 grid grid-cols-3 justify-between items-center gap-5"
-          >
-          </div>
+            class="w-9/12 grid grid-cols-3 justify-between items-center gap-6"
+          ></div>
           <!-- Dynamic Card Section Code End Here -->
 
           <!-- No Information Available Image Section -->
-          <div class="hidden w-4/6 h-96 bg-[#13131308] flex flex-col justify-center items-center text-center rounded-xl mb-8">
+          <div
+            class="hidden w-4/6 h-96 bg-[#13131308] flex flex-col justify-center items-center text-center rounded-xl mb-8"
+          >
             <img src="images/error.webp" alt="Error Image" />
             <h3>No Information Available</h3>
             <p>
@@ -193,21 +192,13 @@
           <!-- Dynamic Likes Images List Section Code Start Here -->
           <div
             id="likes-images-container"
-            class="w-4/12 min-h-screen grid grid-cols-2 gap-5 border-2 p-4 rounded-2xl"
-          >
-            
-            
-            </div>
-          </div>
-          <!-- Dynamic Likes Images List Section Code End Here -->
+            class="w-4/12 min-h-screen columns-2 border-2 p-4 rounded-2xl"
+          ></div>
         </div>
+        <!-- Dynamic Likes Images List Section Code End Here -->
       </section>
       <!-- Modal Section Code Start Here -->
-      <!-- You can open the modal using ID.showModal() method -->
-      <button class="btn" onclick="customModal.showModal()">open modal</button>
-      <div id="modal-container">
-
-      </div>
+      <div id="modal-container"></div>
       <!-- Modal Section Code End Here -->
     </main>
 
