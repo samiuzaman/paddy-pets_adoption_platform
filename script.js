@@ -52,6 +52,11 @@ const loadAllCards = async (categoryBtn) => {
     document
       .getElementById("likes-images-container")
       .classList.remove("hidden");
+
+    document.getElementById("sort-button").addEventListener("click", () => {
+      document.getElementById("cards-container").innerHTML = "";
+      sortPrice(categoryBtn ? data.data : data.pets);
+    });
     displayAllCards(categoryBtn ? data.data : data.pets);
   }, 2000);
 };
@@ -69,9 +74,37 @@ const loadingSpinner = () => {
   spinnerContainer.appendChild(div);
 };
 
+// Sort Button Function Start Here
+// document.getElementById("sort-button").addEventListener("click", () => {
+//   console.log("Button is clicked");
+//   loadAllCards(true);
+//   // document.getElementById("cards-container").innerHTML = "";
+// });
+
+// const dataPassingCard = (cardsData) => {
+//   sortPrice === true ? sortPrice(cardsData) : displayAllCards(cardsData);
+// };
+
+const sortPrice = (cardsData) => {
+  document.getElementById("cards-container").innerHTML = "";
+  loadingSpinner();
+  setTimeout(() => {
+    const sortPets = [];
+    cardsData.forEach((petCard) => {
+      sortPets.push(petCard);
+      sortPets.sort((a, b) => b.price - a.price);
+    });
+    displayAllCards(sortPets);
+    document.getElementById("likes-images-container").classList.remove("hidden");
+    document.getElementById("loading-spinner").classList.add("hidden");
+  }, 2000);
+};
+// Sort Button Function End Here
+
 const displayAllCards = (petsCard) => {
+  let petsCards = petsCard;
   document.getElementById("loading-spinner").classList.add("hidden");
-  petsCard.forEach((card) => {
+  petsCards.forEach((card) => {
     const { image, pet_name, breed, date_of_birth, gender, price, petId } =
       card;
     const cardContainer = document.getElementById("cards-container");
@@ -80,21 +113,25 @@ const displayAllCards = (petsCard) => {
     <div class="min-w-72 border p-4 rounded-xl">
               <img class="mb-5 w-full rounded-lg" src= ${image} />
               <h3 class="font-[Inter] font-bold text-xl text-black mb-2">
-                 ${pet_name}
+                 ${pet_name || "Not Available"}
               </h3>
-              <div class="flex items-center ">
-              <p class="flex items-center text-darkGray text-base font-normal mb-2">
+              <div class="flex items-center text-darkGray">
+              <p class="flex items-center text-darkGray text-base font-medium mb-2">
                <figure class="w-5 h-5"><svg fill="#5A5A5A" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11-6h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4zm-9 4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm8-6c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z"></path></g></svg></figure>
-              Breed: ${breed}</div>
+              Breed: ${breed || "Not Available"}</div>
               </p>
               <p class="text-darkGray text-base font-normal mb-2">
-               <i class="fa-regular fa-calendar"></i> Birth: ${date_of_birth}
+               <i class="fa-regular fa-calendar"></i> Birth: ${
+                 date_of_birth || "Not Available"
+               }
               </p>
               <p class="text-darkGray text-base font-normal mb-2">
-               <i class="fas fa-venus"></i> Gender: ${gender}
+               <i class="fas fa-venus"></i> Gender: ${gender || "Not Available"}
               </p>
               <p class="text-darkGray text-base font-normal mb-4">
-              <i class="fa-solid fa-dollar-sign"></i> Price : ${price}$
+              <i class="fa-solid fa-dollar-sign"></i> Price : ${
+                price || "Not Available"
+              }$
               </p>
               <hr class="mb-4" />
 
@@ -104,8 +141,8 @@ const displayAllCards = (petsCard) => {
                 >
                   <i class="text-xl px-1 fa-regular fa-thumbs-up"></i>
                 </button>
-                <button
-                  class="btn btn-outline text-base text-darkCyan hover:bg-darkCyan font-semibold border-[#0E7A8126]"
+                <button onclick="displayAdoptModal()" id="adopt-button"
+                  class=" btn btn-outline text-base text-darkCyan hover:bg-darkCyan font-semibold border-[#0E7A8126]"
                 >
                   Adopt
                 </button>
@@ -124,6 +161,40 @@ const displayAllCards = (petsCard) => {
   petsCard.length === 0 ? errorMessage() : false;
 };
 // Dynamic Cards Section Code End Here
+
+// Adoption Modal Section Code Start Here
+const displayAdoptModal = () => {
+  adoptionModal();
+  const timeDiv = document.getElementById("time-div");
+  let time = 3;
+  const timeCount = setInterval(() => {
+    time = time - 1;
+    timeDiv.innerHTML = time;
+  }, 1000);
+
+  setTimeout(() => {
+    clearInterval(timeCount);
+    document.getElementById("adopt-modal-container").innerHTML = "";
+  }, 3000);
+};
+
+const adoptionModal = () => {
+  const adoptModalContainer = document.getElementById("adopt-modal-container");
+  const div = document.createElement("div");
+  div.innerHTML = `
+  <dialog id="congrates" class="modal">
+        <div class="modal-box text-center py-16">
+          <img class="w-16 h-16 mx-auto animate-bounce" src="images/handshake.jpg" alt="">
+          <h3 class="text-3xl text-black font-extrabold">Congrates</h3>
+          <p class="py-4">Adoption Process is Start For Your Per</p>
+          <h2 id="time-div" class="text-5xl font-bold text-black">3</h2>
+        </div>
+      </dialog>
+  `;
+  adoptModalContainer.appendChild(div);
+  congrates.showModal();
+};
+// Adoption Modal Section Code End Here
 
 // Error Message Section Code Start Here
 const errorMessage = () => {
