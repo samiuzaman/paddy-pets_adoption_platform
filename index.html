@@ -166,6 +166,9 @@
             Sort by Price
           </button>
         </div>
+        <!-- Loading Spinner Code Start Here -->
+        <div id="loading-spinner" class="text-center py-24"></div>
+        <!-- Loading Spinner Code Start Here -->
 
         <!-- Dynamic Section Parent Div -->
 
@@ -179,20 +182,14 @@
 
           <!-- No Information Available Image Section -->
           <div
-            class="hidden w-4/6 h-96 bg-[#13131308] flex flex-col justify-center items-center text-center rounded-xl mb-8"
-          >
-            <img src="images/error.webp" alt="Error Image" />
-            <h3>No Information Available</h3>
-            <p>
-              This item is currently not available. Try to Another Category
-              Items.
-            </p>
-          </div>
+            id="error-message"
+            class="hidden w-4/6 h-96 bg-[#13131308] flex-col justify-center justify-items-center text-center rounded-xl mb-8"
+          ></div>
 
           <!-- Dynamic Likes Images List Section Code Start Here -->
           <div
             id="likes-images-container"
-            class="w-4/12 min-h-screen columns-2 border-2 p-4 rounded-2xl"
+            class="hidden w-4/12 min-h-screen columns-2 border-2 p-4 rounded-2xl"
           ></div>
         </div>
         <!-- Dynamic Likes Images List Section Code End Here -->

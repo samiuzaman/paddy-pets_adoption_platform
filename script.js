@@ -6,6 +6,7 @@ const loadAllCategories = async () => {
   const data = await response.json();
   displayAllCategories(data.categories);
 };
+
 const displayAllCategories = (categories) => {
   categories.forEach((categorie) => {
     const { category_icon, category } = categorie;
@@ -14,10 +15,10 @@ const displayAllCategories = (categories) => {
     );
     const div = document.createElement("div");
     div.innerHTML = `
-    <button
+    <button onclick="loadAllCards('${category}')"
           class="btn h-20 px-16 text-2xl text-black font-bold border-[#0E7A8126] hover:border-2 hover:border-darkCyan hover:bg-[#0e798138] hover:rounded-full delay-200 focus:border-2 focus:border-darkCyan focus:bg-[#0e798138] focus:rounded-full"
         >
-          <img src="${category_icon}"> ${category}
+           <img src="${category_icon}"> ${category}
         </button>
     `;
     categoryButtonContainer.appendChild(div);
@@ -28,18 +29,51 @@ loadAllCategories();
 // Show Dynamic Category Button End Here
 
 // Dynamic Cards Section Code Start Here
-const loadAllCards = async () => {
+const loadAllCards = async (categoryBtn) => {
+  // Clean Page in previous data in button click
+  document.getElementById("error-message").innerHTML = "";
+  document.getElementById("cards-container").innerHTML = "";
+  document.getElementById("error-message").classList.add("hidden");
+  document.getElementById("likes-images-container").classList.remove("h-96");
+  document
+    .getElementById("likes-images-container")
+    .classList.add("min-h-screen");
+  document.getElementById("cards-container").classList.remove("hidden");
+
   const response = await fetch(
-    "https://openapi.programming-hero.com/api/peddy/pets"
+    `https://openapi.programming-hero.com/api/peddy/${
+      categoryBtn ? `category/${categoryBtn}` : "pets"
+    }`
   );
   const data = await response.json();
-  displayAllCards(data.pets);
+  loadingSpinner();
+  setTimeout(() => {
+    document.getElementById("loading-spinner").classList.add("hidden");
+    document
+      .getElementById("likes-images-container")
+      .classList.remove("hidden");
+    displayAllCards(categoryBtn ? data.data : data.pets);
+  }, 2000);
 };
+
+// loading Spinner Code start Here
+const loadingSpinner = () => {
+  const spinnerContainer = document.getElementById("loading-spinner");
+  spinnerContainer.innerHTML = "";
+  spinnerContainer.classList.remove("hidden");
+  document.getElementById("likes-images-container").classList.add("hidden");
+  const div = document.createElement("div");
+  div.innerHTML = `
+  <span class="loading loading-dots loading-lg"></span>
+  `;
+  spinnerContainer.appendChild(div);
+};
+
 const displayAllCards = (petsCard) => {
+  document.getElementById("loading-spinner").classList.add("hidden");
   petsCard.forEach((card) => {
     const { image, pet_name, breed, date_of_birth, gender, price, petId } =
       card;
-
     const cardContainer = document.getElementById("cards-container");
     const div = document.createElement("div");
     div.innerHTML = `
@@ -87,8 +121,31 @@ const displayAllCards = (petsCard) => {
 
     cardContainer.appendChild(div);
   });
+  petsCard.length === 0 ? errorMessage() : false;
 };
 // Dynamic Cards Section Code End Here
+
+// Error Message Section Code Start Here
+const errorMessage = () => {
+  const errorMessage = document.getElementById("error-message");
+  errorMessage.classList.remove("hidden");
+  const likesListContainer = document.getElementById("likes-images-container");
+  likesListContainer.classList.remove("min-h-screen");
+  likesListContainer.classList.add("h-96");
+  document.getElementById("cards-container").classList.add("hidden");
+
+  const messageDiv = document.createElement("div");
+  messageDiv.innerHTML = `
+            <img class="w-48 h-48 mx-auto mt-12" src="images/error.webp" alt="Error Image" />
+            <h3 class="text-black text-3xl font-black my-4">No Information Available</h3>
+            <p>
+              This item is currently not available. Try to Another Category
+              Items.
+            </p>
+    `;
+  errorMessage.appendChild(messageDiv);
+};
+// Error Message Section Code End Here
 
 // Likes Post List Section Code Start Here
 const likesPost = (image) => {
@@ -97,7 +154,7 @@ const likesPost = (image) => {
   );
   const div = document.createElement("div");
   div.innerHTML = `
-  <img class="rounded-lg mb-4 h-28" src=${image}>
+  <img class="rounded-lg mb-4 h-28 w-44" src=${image}>
   `;
   likesImagesContainer.appendChild(div);
 };
