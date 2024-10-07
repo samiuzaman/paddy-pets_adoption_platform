@@ -16,7 +16,7 @@ const displayAllCategories = (categories) => {
     const div = document.createElement("div");
     div.innerHTML = `
     <button onclick="loadAllCards('${category}')"
-          class="btn h-20 px-16 text-2xl text-black font-bold border-[#0E7A8126] hover:border-2 hover:border-darkCyan hover:bg-[#0e798138] hover:rounded-full delay-200 focus:border-2 focus:border-darkCyan focus:bg-[#0e798138] focus:rounded-full"
+          class="btn h-20 px-6 md:px-12 text-2xl text-black font-bold border-[#0E7A8126] hover:border-2 hover:border-darkCyan hover:bg-[#0e798138] hover:rounded-full delay-200 focus:border-2 focus:border-darkCyan focus:bg-[#0e798138] focus:rounded-full"
         >
            <img src="${category_icon}"> ${category}
         </button>
@@ -74,17 +74,6 @@ const loadingSpinner = () => {
   spinnerContainer.appendChild(div);
 };
 
-// Sort Button Function Start Here
-// document.getElementById("sort-button").addEventListener("click", () => {
-//   console.log("Button is clicked");
-//   loadAllCards(true);
-//   // document.getElementById("cards-container").innerHTML = "";
-// });
-
-// const dataPassingCard = (cardsData) => {
-//   sortPrice === true ? sortPrice(cardsData) : displayAllCards(cardsData);
-// };
-
 const sortPrice = (cardsData) => {
   document.getElementById("cards-container").innerHTML = "";
   loadingSpinner();
@@ -95,7 +84,9 @@ const sortPrice = (cardsData) => {
       sortPets.sort((a, b) => b.price - a.price);
     });
     displayAllCards(sortPets);
-    document.getElementById("likes-images-container").classList.remove("hidden");
+    document
+      .getElementById("likes-images-container")
+      .classList.remove("hidden");
     document.getElementById("loading-spinner").classList.add("hidden");
   }, 2000);
 };
@@ -174,6 +165,9 @@ const displayAdoptModal = () => {
 
   setTimeout(() => {
     clearInterval(timeCount);
+    const adoptButton = document.getElementById("adopt-button");
+    adoptButton.innerHTML = "Adopted";
+    adoptButton.setAttribute("disabled", true);
     document.getElementById("adopt-modal-container").innerHTML = "";
   }, 3000);
 };
