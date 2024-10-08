@@ -16,7 +16,7 @@ const displayAllCategories = (categories) => {
     const div = document.createElement("div");
     div.innerHTML = `
     <button onclick="loadAllCards('${category}')"
-          class="btn h-20 px-6 md:px-12 text-2xl text-black font-bold border-[#0E7A8126] hover:border-2 hover:border-darkCyan hover:bg-[#0e798138] hover:rounded-full delay-200 focus:border-2 focus:border-darkCyan focus:bg-[#0e798138] focus:rounded-full"
+          class="btn min-h-20 px-6 md:px-12 text-2xl text-black font-bold border-[#0E7A8126] hover:border-2 hover:border-darkCyan hover:bg-[#0e798138] hover:rounded-full delay-200 focus:border-2 focus:border-darkCyan focus:bg-[#0e798138] focus:rounded-full"
         >
            <img src="${category_icon}"> ${category}
         </button>
