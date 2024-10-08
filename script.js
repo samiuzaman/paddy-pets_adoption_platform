@@ -132,7 +132,7 @@ const displayAllCards = (petsCard) => {
                 >
                   <i class="text-xl px-1 fa-regular fa-thumbs-up"></i>
                 </button>
-                <button onclick="displayAdoptModal()" id="adopt-button"
+                <button onclick="displayAdoptModal('${petId}')" id="adopt-button'${petId}'"
                   class=" btn btn-outline text-base text-darkCyan hover:bg-darkCyan font-semibold border-[#0E7A8126]"
                 >
                   Adopt
@@ -154,7 +154,7 @@ const displayAllCards = (petsCard) => {
 // Dynamic Cards Section Code End Here
 
 // Adoption Modal Section Code Start Here
-const displayAdoptModal = () => {
+const displayAdoptModal = (id) => {
   adoptionModal();
   const timeDiv = document.getElementById("time-div");
   let time = 3;
@@ -163,9 +163,11 @@ const displayAdoptModal = () => {
     timeDiv.innerHTML = time;
   }, 1000);
 
+  console.log(`adopt-button'${id}'`);
+
   setTimeout(() => {
     clearInterval(timeCount);
-    const adoptButton = document.getElementById("adopt-button");
+    const adoptButton = document.getElementById(`adopt-button'${id}'`);
     adoptButton.innerHTML = "Adopted";
     adoptButton.setAttribute("disabled", true);
     document.getElementById("adopt-modal-container").innerHTML = "";
