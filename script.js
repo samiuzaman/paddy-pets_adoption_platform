@@ -75,8 +75,8 @@ const loadingSpinner = () => {
 };
 
 const sortPrice = (cardsData) => {
-  document.getElementById("cards-container").innerHTML = "";
   loadingSpinner();
+  document.getElementById("cards-container").innerHTML = "";
   setTimeout(() => {
     const sortPets = [];
     cardsData.forEach((petCard) => {
@@ -93,6 +93,7 @@ const sortPrice = (cardsData) => {
 // Sort Button Function End Here
 
 const displayAllCards = (petsCard) => {
+  document.getElementById("cards-container").innerHTML = "";
   let petsCards = petsCard;
   document.getElementById("loading-spinner").classList.add("hidden");
   petsCards.forEach((card) => {
