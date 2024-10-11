@@ -242,19 +242,19 @@ const loadModals = async (petId) => {
     <div>
     <img class="max-h-64 w-full rounded-lg mb-5  object-fill" src=${image} />
     <h3 class="font-[Inter] font-bold text-xl text-black mb-2">
-                 ${pet_name}
+                 ${pet_name || "Not Available"}
               </h3>
               
               <div class="columns-2 mb-3">
               <div class="flex items-center mb-1">
               <figure class="w-5 h-5"><svg fill="#5A5A5A" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11-6h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4zm-9 4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm8-6c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z"></path></g></svg></figure>
               <p class="text-darkGray text-base font-normal">
-              Breed: ${breed}
+              Breed: ${breed || "Not Available"}
               </p>
               </div>
 
               <p class="text-darkGray text-base font-normal mb-1">
-               <i class="fas fa-venus"></i> Gender: ${gender}
+               <i class="fas fa-venus"></i> Gender: ${gender || "Not Available"}
               </p>
 
               <p class="text-darkGray text-base font-normal mb-1">
@@ -263,11 +263,15 @@ const loadModals = async (petId) => {
               
 
               <p class="text-darkGray text-base font-normal mb-1">
-               <i class="fa-regular fa-calendar"></i> Birth: ${date_of_birth}
+               <i class="fa-regular fa-calendar"></i> Birth: ${
+                 date_of_birth || "Not Available"
+               }
               </p>
 
               <p class="text-darkGray text-base font-normal mb-1">
-              <i class="fa-solid fa-dollar-sign"></i> Price : ${price}$
+              <i class="fa-solid fa-dollar-sign"></i> Price : ${
+                price || "Not Available"
+              }$
               </p>
               
               
